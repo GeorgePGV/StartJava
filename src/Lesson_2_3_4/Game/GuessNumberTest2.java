@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GuessNumberTest2 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in,"Cp866");
+        Scanner scanner = new Scanner(System.in, "Cp866");
         String answer = "Yes";
         while(answer.equals("Yes")) {
             System.out.println("Enter the name of the first player");
@@ -16,7 +16,7 @@ public class GuessNumberTest2 {
             do {
                 System.out.println("Do you want to continue playing? [Yes/No]:");
                 answer = scanner.next();
-            }while(!answer.equals("Yes") && !answer.equals("No"));
+            } while(!answer.equals("Yes") && !answer.equals("No"));
         }
     }
 }
