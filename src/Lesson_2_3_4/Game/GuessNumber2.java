@@ -19,52 +19,54 @@ public class GuessNumber2 {
             System.out.println("Try to guess the number guessed by the computer");
             System.out.println("You have 10 attempts");
             for (int i = 0; i < 10; i++) {
-                input(i,player1);
-                check(i,player1, randomNum);
-                if (player1.getNumber(i) == randomNum) {
-                    System.out.println(player1.getNumber(i) + " guessed the number " + player1.getNumber(i) + " on the " + (i + 1) + " attempt");
+                inputNumber(i,player1);
+                if (checkNumber(i,player1,randomNum)) {
                     break;
                 }
-                input(i,player2);
-                check(i,player2, randomNum);
-                if (player2.getNumber(i) == randomNum) {
-                    System.out.println(player2.getName() + " guessed the number " + player2.getNumber(i) + " on the " + (i + 1) + " attempt");
+
+                inputNumber(i,player2);
+                if (checkNumber(i,player2,randomNum)) {
                     break;
                 }
             }
-            attemptsOutput(player1);
-            attemptsOutput(player2);
+            outputAttempts(player1);
+            outputAttempts(player2);
             System.out.println();
             Arrays.fill(player1.getNumbers(), 0);
             Arrays.fill(player2.getNumbers(), 0);
         }
 
-        public void input(int i, Player2 player1) {
-            System.out.println(player1.getNumber(i) + " enter a number");
+        private void inputNumber(int i, Player2 player) {
+            System.out.println(player.getName() + " enter a number");
             Scanner scanner = new Scanner(System.in, "Cp866");
-            player1.setNumbers(scanner.nextInt(), i);
-            player1.setAttempt(i);
+            player.setNumber(scanner.nextInt(), i);
+            player.setAttempt(i);
         }
 
-        public void check(int i, Player2 player1, int randomNum) {
-            if (player1.getNumber(i) > randomNum) {
+        private boolean checkNumber(int i, Player2 player, int randomNum) {
+            boolean result = false;
+            if (player.getNumber(i) > randomNum) {
                 System.out.println("The hidden number is less");
                 if (i == 9) {
-                    System.out.println(player1.getNumber(i) + " has run out of attempts");
+                    System.out.println(player.getNumber(i) + " has run out of attempts");
                 }
-            } else if (player1.getNumber(i) < randomNum) {
+            } else if (player.getNumber(i) < randomNum) {
                 System.out.println("The hidden number is greater");
                 if (i == 9) {
-                    System.out.println(player1.getNumber(i) + " has run out of attempts");
+                    System.out.println(player.getNumber(i) + " has run out of attempts");
                 }
+            } else if (player.getNumber(i) == randomNum) {
+                System.out.println(player.getNumber(i) + " guessed the number " + player.getNumber(i) + " on the " + (i + 1) + " attempt");
+                result = true;
             }
+            return result;
         }
 
-        public void attemptsOutput(Player2 player1) {
-            int[] num2copy1 = Arrays.copyOf(player1.getNumbers(), player1.getAttempt() + 1);
+        private void outputAttempts(Player2 player1) {
+            int[] numbers = Arrays.copyOf(player1.getNumbers(), player1.getAttempt() + 1);
             System.out.println(player1.getName() + " attempts");
-            for (int b : num2copy1) {
-                System.out.print(b + " ");
+            for (int number : numbers) {
+                System.out.print(number + " ");
             }
             System.out.println();
         }

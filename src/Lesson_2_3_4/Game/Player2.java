@@ -1,5 +1,7 @@
 package Lesson_2_3_4.Game;
 
+import java.util.Arrays;
+
 public class Player2 {
     private final String name;
     private final int[] numbers = new int[10];
@@ -13,12 +15,12 @@ public class Player2 {
         return name;
     }
 
-    public void setNumbers(int num, int i) {
-        numbers[i] = num;
+    public void setNumber(int number, int i) {
+        numbers[i] = number;
     }
 
     public int[] getNumbers() {
-        return numbers;
+        return Arrays.copyOf(numbers, 10);
     }
 
     public int getNumber(int i) {
