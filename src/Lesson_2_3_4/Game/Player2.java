@@ -15,16 +15,16 @@ public class Player2 {
         return name;
     }
 
-    public void setNumber(int number, int i) {
-        numbers[i] = number;
+    public void setNumber(int number) {
+        numbers[attempt] = number;
     }
 
     public int[] getNumbers() {
-        return Arrays.copyOf(numbers, 10);
+        return Arrays.copyOf(numbers, attempt + 1);
     }
 
-    public int getNumber(int i) {
-        return numbers[i];
+    public int getNumber() {
+        return numbers[attempt];
     }
 
     public int getAttempt() {
