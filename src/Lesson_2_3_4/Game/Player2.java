@@ -34,4 +34,8 @@ public class Player2 {
     public void setAttempt(int attempt) {
         this.attempt = attempt;
     }
+
+    public void cleanArray() {
+        Arrays.fill(numbers, 0);
+    }
 }

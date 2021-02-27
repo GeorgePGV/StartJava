@@ -31,8 +31,8 @@ public class GuessNumber2 {
         outputAttempts(player1);
         outputAttempts(player2);
         System.out.println();
-        Arrays.fill(player1.getNumbers(), 0);
-        Arrays.fill(player2.getNumbers(), 0);
+        player1.cleanArray();
+        player2.cleanArray();
     }
 
     private void inputNumber(int i, Player2 player) {
