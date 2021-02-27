@@ -1,6 +1,5 @@
 package Lesson_2_3_4.Game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber2 {
