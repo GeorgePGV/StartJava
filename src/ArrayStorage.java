@@ -16,30 +16,32 @@ public class ArrayStorage {
 
     void save(Resume r) {
         storage[size] = r;
-        r.setUuid(String.valueOf(size + 1));
         size++;
     }
 
     Resume get(String uuid) {
-        for(int i = 0; i < uuid.length(); i++) {
-            if(uuid.charAt(i) >= '0' || uuid.charAt(i) <= '9') {
-
+        Resume r = new Resume();
+        for (int i = 0; i < size; i++) {
+            if (uuid.equals(storage[i].getUuid())) {
+                r = storage[i];
             }
-
         }
-        return storage[];
+        return r;
     }
 
     void delete(String uuid) {
-       String[] id = uuid.split("d");
-        for (int i = Integer.parseInt(uuid); i < size ; i++) {
-            storage[Integer.parseInt(uuid) - 1] = storage[Integer.parseInt(uuid)];
+        for (int i = 0; i <= size; i++) {
+            if (uuid.equals(storage[i].getUuid())) {
+                for (int g = i + 1; g <= size; g++) {
+                    storage[g] = storage[g - 1];
+                }
+            }
         }
         size--;
     }
 
     /**
-     * @return array, contains only Resumes in storage (without null)
+     * @return array, contains only Resumles in storage (without null)
      */
     Resume[] getAll() {
         Resume[] copyOfStorage = new Resume[size];
