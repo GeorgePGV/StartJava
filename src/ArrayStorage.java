@@ -24,31 +24,36 @@ public class ArrayStorage {
         for (int i = 0; i < size; i++) {
             if (uuid.equals(storage[i].getUuid())) {
                 r = storage[i];
+                //return storage[i];
+            }
+            if (i == size - 1 || !uuid.equals(storage[i].getUuid())) {
+                r = null;
+                //return null;
             }
         }
         return r;
     }
 
     void delete(String uuid) {
-        for (int i = 0; i <= size; i++) {
+        for (int i = 0; i < size; i++) {
             if (uuid.equals(storage[i].getUuid())) {
-                for (int g = i + 1; g <= size; g++) {
-                    storage[g] = storage[g - 1];
+                for (int j = i + 1; j < size; j++) {
+                    storage[j] = storage[j - 1];
                 }
+                size--;
             }
         }
-        size--;
     }
 
     /**
      * @return array, contains only Resumles in storage (without null)
      */
     Resume[] getAll() {
-        Resume[] copyOfStorage = new Resume[size];
+        Resume[]  allResumes = new Resume[size];
         for (int i = 0; i < size ; i++){
-            copyOfStorage[i] = storage[i];
+            allResumes[i] = storage[i];
         }
-        return copyOfStorage;
+        return  allResumes;
     }
 
     int size() {
