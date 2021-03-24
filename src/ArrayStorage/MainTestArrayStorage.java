@@ -1,5 +1,7 @@
+package ArrayStorage;
+
 /**
- * Test for your ArrayStorage implementation
+ * Test for your ArrayStorage.ArrayStorage implementation
  */
 public class MainTestArrayStorage {
     static final ArrayStorage ARRAY_STORAGE = new ArrayStorage();
@@ -15,6 +17,10 @@ public class MainTestArrayStorage {
         ARRAY_STORAGE.save(r1);
         ARRAY_STORAGE.save(r2);
         ARRAY_STORAGE.save(r3);
+
+        System.out.println("Get r1: " + ARRAY_STORAGE.get(r1.uuid));
+
+        ARRAY_STORAGE.update(r1);
 
         System.out.println("Get r1: " + ARRAY_STORAGE.get(r1.uuid));
         System.out.println("Size: " + ARRAY_STORAGE.size());
